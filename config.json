@@ -1,0 +1,66 @@
+{
+  #command prefix
+  "prefix": "llc",
+
+  "commands": [
+
+    #get character's corresponding pinyins, drawing, definition and decomposition
+    {
+
+      #what the user have to type.
+      #Example : prefix name 你
+      "name": "info",
+
+      #titles of the different embed's fields
+      "character_field_title": "Character",
+      "pinyin_field_title": "Pinyins",
+      "definition_field_title" : "Translations",
+
+      #description in the help command
+      "description": "Get character's pinyins and translations.",
+
+      #argument to show in the help function
+      "argument": "character"
+      },
+
+    #get pinyin's corresponding characters
+    {
+
+      #what the user have to type.
+      "name": "pinyin",
+
+      #titles of the different embed's fields
+      "pinyin_field_title": "Pinyin",
+      "character_field_title": "Characters",
+
+      #description in the help command
+      "description": "Get pinyin's characters.",
+
+      #argument to show in the help function
+      "argument": "pinyin"
+      },
+
+    #command that get informations on the others
+    {
+      "name": "help",
+
+      #description in the help command
+      "description": "Use this command to get the usage and description of other commands."
+    }
+  ],
+
+  "error_messages": {
+
+    #error embed's title
+    "error_title": "Error",
+
+    #message displayed when the command is invalid
+    "command_error": "Invalid command",
+
+    #message displayed when the character / pinyin entered is invalid
+    "input_error" : "Invalid character / pinyin",
+
+    #message displayed if the bot do not have the permission to send a message in the channel
+    "perm_error" : "Unable to send the message"
+  }
+}

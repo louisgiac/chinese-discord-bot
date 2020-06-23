@@ -1,0 +1,16 @@
+{
+  "name": "chinese-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord bot that can convert pinyins and characters, get definitons and drawing",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "author": "Louis Giacinti",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "sqlite3": "^4.2.0"
+  }
+}
