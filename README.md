@@ -5,9 +5,7 @@ A discord bot that can convert pinyins to characters and vice versa, get charact
 ## Usage
 You need first to install dependencies :
 ```
-npm install discord.js
-npm install sqlite3
-npm install dotenv
+npm install
 ```
 To set the token environment variable :
 ```
