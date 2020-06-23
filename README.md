@@ -3,8 +3,13 @@
 A discord bot that can convert pinyins to characters and vice versa, get character's definition and drawing gif.
 
 ## Usage
-
-You need first to set the token environment variable :
+You need first to install dependencies :
+```
+npm install discord.js
+npm install sqlite3
+npm install dotenv
+```
+To set the token environment variable :
 ```
 BOT_TOKEN=your_token_goes_here
 ```
