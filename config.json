@@ -1,6 +1,6 @@
 {
   #command prefix
-  "prefix": "llc",
+  "prefix": "lc",
 
   "commands": [
 

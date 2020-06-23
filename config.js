@@ -17,7 +17,7 @@ InvalidConfig.prototype = Error.prototype;
 
 //function that checks the config string and throw errors if it is invalid
 function check_config(config_string) {
-  const valid_config_regex = /{"prefix":"llc","commands":\[{"name":"[^"]+","character_field_title":"[^"]+","pinyin_field_title":"[^"]+","definition_field_title":"[^"]+","description":"[^"]+","argument":"[^"]+"},{"name":"[^"]+","pinyin_field_title":"[^"]+","character_field_title":"[^"]+","description":"[^"]+","argument":"[^"]+"},{"name":"help","description":"[^"]+"}],"error_messages":{"error_title":"[^"]+","command_error":"[^"]+","input_error":"[^"]+","perm_error":"[^"]+"}}/g
+  const valid_config_regex = /{"prefix":"[^"]+","commands":\[{"name":"[^"]+","character_field_title":"[^"]+","pinyin_field_title":"[^"]+","definition_field_title":"[^"]+","description":"[^"]+","argument":"[^"]+"},{"name":"[^"]+","pinyin_field_title":"[^"]+","character_field_title":"[^"]+","description":"[^"]+","argument":"[^"]+"},{"name":"help","description":"[^"]+"}],"error_messages":{"error_title":"[^"]+","command_error":"[^"]+","input_error":"[^"]+","perm_error":"[^"]+"}}/g
 
   const empty_string_regex = /""/g
 
