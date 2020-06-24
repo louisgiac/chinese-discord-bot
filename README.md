@@ -24,4 +24,4 @@ You can change messages displayed on discord by editing the [config file](config
 All drawing gifs come from here :
 https://github.com/nmarley/chinese-char-animations/
 
-[character's definitions and pinyins](dictionnary/cedict_ts.db) are extracted from [CC-CEDICT](dictionnary/cedict_ts.u8) available here : https://www.mdbg.net/chinese/dictionary?page=cc-cedict
+[character's definitions and pinyins](dictionary/cedict_ts.db) are extracted from [CC-CEDICT](dictionary/cedict_ts.u8) available here : https://www.mdbg.net/chinese/dictionary?page=cc-cedict

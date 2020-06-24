@@ -20,7 +20,7 @@ const sqlite3 = require("sqlite3").verbose();
 const errors = require("./errors");
 
 const CHAR_DB = "chars.db";
-const CEDICT_DB = "dictionnary/cedict_ts.db";
+const CEDICT_DB = "dictionary/cedict_ts.db";
 
 //function that send a command to a sqlite database and return the query
 async function sendSQLcommand(database, command) {
