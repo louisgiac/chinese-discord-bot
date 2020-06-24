@@ -7,10 +7,18 @@
     "start": "node bot.js"
   },
   "author": "Louis Giacinti",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
     "sqlite3": "^4.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louisgiac/chinese-discord-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/louisgiac/chinese-discord-bot/issues"
+  },
+  "homepage": "https://github.com/louisgiac/chinese-discord-bot#readme"
 }

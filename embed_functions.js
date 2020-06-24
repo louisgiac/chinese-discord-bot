@@ -1,3 +1,21 @@
+/*
+Copyright (C) 2020  Giacinti Louis
+contact : <louis@giacinti.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 const { convertPinyinsAndChar, getGifLink, getCharDefinition } = require("./sql_commands");
 const config = require("./config").getConfig();
 const errors = require("./errors")
@@ -148,7 +166,7 @@ async function executeCommand(function_name, arg) {
 
 //function that create an embed from the given error to send it to the user
 function sendError(error) {
-  
+
   var embed = new Embed(15158332);
 
   embed.addField(config.error_messages.error_title, error.message, false);
