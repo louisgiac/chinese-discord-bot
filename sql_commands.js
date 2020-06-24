@@ -19,6 +19,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 const sqlite3 = require("sqlite3").verbose();
 const errors = require("./errors");
 
+const CHAR_DB = "chars.db";
+const CEDICT_DB = "dictionnary/cedict_ts.db";
+
 //function that send a command to a sqlite database and return the query
 async function sendSQLcommand(database, command) {
     return new Promise(function(resolve, reject) {
@@ -47,14 +50,20 @@ async function sendSQLcommand(database, command) {
 
 module.exports = {
 
-  //function that gets input's (pinyin / character) corresponding pinyin / character in the database, and return a string
-  convertPinyinsAndChar: async (input, input_type, output_type) => {
+  //function that gets input's (pinyin / character) corresponding pinyin / character in the database, and return an object
+  convertPinyinsAndChar: async (input, input_type) => {
     return new Promise(function(resolve, reject) {
 
-      var characters = "";
+      var output_type = "simplified, traditional";
+      var condition = `pinyin = "${input}"`;
+
+      if(input_type == "char") {
+        output_type = "pinyin";
+        condition = `simplified = "${input}" or traditional = "${input}"`;
+      }
 
       //send the query
-      sendSQLcommand("dictionnary/pinyin-character.db", `select ${output_type} from dict where ${input_type} = "${input}";`)
+      sendSQLcommand(CEDICT_DB, `select simplified, traditional, pinyin from dict where ${condition};`)
 
         .then(data => {
 
@@ -62,12 +71,8 @@ module.exports = {
             reject(new errors.InputError);
           }
 
-          //result to string
-          for(let i = 0; i < data.length; i++) {
-            characters += `${i} : ${data[i][output_type]}\n`;
-          }
+          resolve(data);
 
-          resolve(characters);
         })
 
         .catch(err => reject(err));
@@ -82,19 +87,15 @@ module.exports = {
       var definitions = "";
 
       //sending the query
-      sendSQLcommand("dictionnary/pinyin-character.db", `select definition from dict where char = "${char}";`)
+      sendSQLcommand(CEDICT_DB, `select definition from dict where simplified = "${char}" or traditional = "${char}";`)
 
         .then(data => {
           var definition = "";
 
-          //if there is no definition available
-          if(data.length < 1) resolve("-")
-
           //create a string
           for(let i = 0; i < data.length; i++) {
 
-          definition = data[i].definition.split("[SEPARATION]").join('\n')
-          definitions += `${i} : ${definition}\n`;
+          definitions += `${i} : ${data[i].definition}\n`;
 
           }
 
@@ -112,7 +113,7 @@ module.exports = {
     return new Promise(function (resolve, reject) {
 
       //sending the query
-      sendSQLcommand("chars.db", `select code from chinese where khar="${char}"`)
+      sendSQLcommand(CHAR_DB, `select code from chinese where khar="${char}"`)
 
         .then(code => {
 

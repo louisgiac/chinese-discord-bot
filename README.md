@@ -1,6 +1,8 @@
 # Chinese Discord Bot
 
-A discord bot that can convert pinyins to characters and vice versa, get character's definition and drawing gif.
+A discord bot that can convert pinyins to characters and vice versa, get character's traditional / simplified equivalent, definition and drawing gif.
+
+There is also some multiple character words. Refer to [CC-CEDICT](dictionary/cedict_ts.u8) for the complete list.
 
 ## Usage
 You need first to install dependencies :
@@ -22,4 +24,4 @@ You can change messages displayed on discord by editing the [config file](config
 All drawing gifs come from here :
 https://github.com/nmarley/chinese-char-animations/
 
-[character's definitions and pinyins](dictionnary/pinyin-character.db) are extracted from [CC-CEDICT](dictionnary/cedict_ts.u8) available here : https://www.mdbg.net/chinese/dictionary?page=cc-cedict
+[character's definitions and pinyins](dictionnary/cedict_ts.db) are extracted from [CC-CEDICT](dictionnary/cedict_ts.u8) available here : https://www.mdbg.net/chinese/dictionary?page=cc-cedict

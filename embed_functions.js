@@ -66,8 +66,29 @@ async function getInfo(char) {
     embed.addField(config.commands[0].character_field_title, char, true);
 
     //get character's pinyin then add a field
-    await convertPinyinsAndChar(char, "char", "pinyin")
-      .then(p => embed.addField(config.commands[0].pinyin_field_title, p, true))
+    await convertPinyinsAndChar(char, "char")
+      .then(data => {
+        let pinyins = "";
+
+        //getting character's traditional / simplified equivalent, if there are the same, we don't add the field
+        if(char == data[0].simplified && char != data[0].traditional) {
+
+          embed.addField(config.commands[0].traditional_field_title, data[0].traditional, true);
+
+        } else if(char != data[0].simplified && char == data[0].traditional) {
+
+          embed.addField(config.commands[0].simplified_field_title, data[0].simplified, true);
+
+        }
+
+        //creating a string with each pinyin
+        for(let i = 0; i < data.length; i++) {
+          pinyins += `${i} : ${data[i].pinyin}\n`;
+        }
+
+
+        embed.addField(config.commands[0].pinyin_field_title, pinyins, true);
+      })
       .catch(err => reject(err));
 
     //get character's definitions and add a field
@@ -75,16 +96,22 @@ async function getInfo(char) {
       .then(defs => embed.addField(config.commands[0].definition_field_title, defs, false))
       .catch(err => reject(err));
 
-    //get character's drawing and if it does not exist set the default one
-    await getGifLink(char)
-      .then(url => embed.setImage(url))
+    //if there is only one character
+    if(char.length == 1) {
 
-      .catch(err => {
-        if(err.name == "GIF_ERROR") {
-          embed.setImage("https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg");
-        }
+      //get character's drawing and if it does not exist set the default one
+      await getGifLink(char)
+        .then(url => embed.setImage(url))
 
-      });
+        .catch(err => {
+          if(err.name == "GIF_ERROR") {
+            embed.setImage("https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg");
+          }
+
+        });
+
+    }
+
 
     resolve(embed.getEmbed());
   });
@@ -98,9 +125,21 @@ async function getCharacters(pinyin) {
     embed.addField(config.commands[1].pinyin_field_title, pinyin, true);
 
     //getting pinyin's characters and add field
-    convertPinyinsAndChar(pinyin, "pinyin", "char")
-      .then(characters => {
-        embed.addField(config.commands[1].character_field_title, characters, true);
+    convertPinyinsAndChar(pinyin, "pinyin")
+      .then(data => {
+
+        let simplified = "";
+        let traditional = "";
+
+        //creating a string with each character
+        for(let i = 0; i < data.length; i++) {
+          simplified += `${i} : ${data[i].simplified}\n`;
+          traditional += `${i} : ${data[i].traditional}\n`;
+
+        }
+
+        embed.addField(config.commands[1].simplified_field_title, simplified, true);
+        embed.addField(config.commands[1].traditional_field_title, traditional, true);
 
         resolve(embed.getEmbed());
       })

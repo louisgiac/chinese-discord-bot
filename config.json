@@ -1,6 +1,6 @@
 {
   #command prefix
-  "prefix": "lc",
+  "prefix": "lct",
 
   "commands": [
 
@@ -12,12 +12,14 @@
       "name": "info",
 
       #titles of the different embed's fields
-      "character_field_title": "Character",
+      "character_field_title" : "Character",
+      "traditional_field_title": "Traditional equivalent",
+      "simplified_field_title": "Simplified equivalent",
       "pinyin_field_title": "Pinyins",
       "definition_field_title" : "Translations",
 
       #description in the help command
-      "description": "Get character's pinyins and translations.",
+      "description": "Get character's pinyins, traditional / simplified equivalent and translations.",
 
       #argument to show in the help function
       "argument": "character"
@@ -31,7 +33,8 @@
 
       #titles of the different embed's fields
       "pinyin_field_title": "Pinyin",
-      "character_field_title": "Characters",
+      "traditional_field_title": "Traditional",
+      "simplified_field_title": "Simplified",
 
       #description in the help command
       "description": "Get pinyin's characters.",
