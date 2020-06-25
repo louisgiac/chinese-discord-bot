@@ -62,7 +62,10 @@ function HandleError(err) {
       error_message = err.message;
   }
 
-  return error_message;
+  console.log(err.name);
+  console.log(error_message);
+
+  process.exit(1);
 }
 
 InputError.prototype = Error.prototype;

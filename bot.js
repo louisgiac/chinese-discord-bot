@@ -59,13 +59,11 @@ Cli.on('message', async message => {
 });
 
 Cli.on('shardError', error => {
-	 console.error(errors.HandleError(err));
-   console.error(err.name);
+	 errors.HandleError(err);
 });
 
 Cli.login(process.env.BOT_TOKEN)
   .catch(err => {
     //Usually triggered when the bot's token is invalid
-    console.error(err.name);
-    console.error(errors.HandleError(err));
+    errors.HandleError(err);
   });
