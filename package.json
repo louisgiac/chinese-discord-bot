@@ -1,6 +1,6 @@
 {
   "name": "chinese-discord-bot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Discord bot that can convert pinyins and characters, get definitions and drawing",
   "main": "bot.js",
   "scripts": {
