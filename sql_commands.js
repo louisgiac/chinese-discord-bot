@@ -25,7 +25,7 @@ const CEDICT_DB = "dictionary/cedict_ts.db";
 //function that send a command to a sqlite database and return the query
 async function sendSQLcommand(database, command) {
     return new Promise(function(resolve, reject) {
-      let db = new sqlite3.Database(database, sqlite3.OPEN_READWRITE, (err) => {
+      let db = new sqlite3.Database(database, sqlite3.OPEN_READ, (err) => {
         if (err) {
           reject(err);
         }
