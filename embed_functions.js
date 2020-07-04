@@ -60,6 +60,12 @@ class Embed {
 async function getInfo(char) {
   return new Promise(async function(resolve, reject) {
 
+    //missing character in command
+    if(char == undefined) {
+      reject(new errors.CommandError);
+      return;
+    }
+
     var embed = new Embed(4886754);
 
     //set the character's field in the embed with the title in the config file
@@ -120,6 +126,13 @@ async function getInfo(char) {
 //function (command) that get pinyin's characters and return an embed
 async function getCharacters(pinyin) {
   return new Promise(function(resolve, reject) {
+
+    //missing pinyin in command
+    if(pinyin == undefined) {
+      reject(new errors.CommandError);
+      return;
+    }
+
     characters = ""
     embed = new Embed(4886754)
     embed.addField(config.commands[1].pinyin_field_title, pinyin, true);
